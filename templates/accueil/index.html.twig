@@ -2,7 +2,9 @@
 
 {% block title %}Accueil{% endblock %}
 
-{% block header_title %}{% endblock %}
+{% block header_title %}
+    <img src="{{ asset('images/next-talent.png') }}" alt="Logo" onclick="window.location.href='{{ path('app_accueil') }}">
+{% endblock %}
 
 {% block content %}
     <div class="content">
@@ -11,7 +13,7 @@
         <div class="choice-container">
 
             <!-- Choix Alternant -->
-            <div class="choice-box" onclick="window.location.href='{{ path('app_inscription') }}'">
+            <div class="choice-box" onclick="window.location.href='{{ path('app_alternant') }}'">
                 <div class="icon-container">
                     <img src="{{ asset('images/etudiant.png') }}" alt="Alternant Icon">
                 </div>

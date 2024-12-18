@@ -1,32 +1,48 @@
-{# templates/mes_offres/index.html.twig #}
-
 {% extends 'base.html.twig' %}
 
 {% block title %}Mes Offres{% endblock %}
 
-{% block content %}
-    <div class="container">
-        <h1 class="my-4 text-center">Mes Offres</h1>
+{% block header_title %}
+    <img src="{{ asset('images/next-talent.png') }}" alt="Logo" onclick="window.location.href='{{ path('app_accueil') }}">
 
-        <a href="{{ path('pme_ajouter_offre') }}" class="btn btn-primary mb-4">Ajouter une nouvelle offre</a>
+    <div class="container d-flex justify-content-between align-items-center">
+            <!-- Logo ou Titre -->
+            <h1 class="text-orange"></h1>
+
+            <!-- Navigation -->
+            <nav>
+                <a href="{{ path('pme_mes_offres') }}" class="header-btn">Voir mes offres</a>
+                <a href="{{ path('pme_ajouter_offre') }}" class="header-btn">Ajouter une offre</a>
+                <a href="{{ path('app_accueil') }}" class="header-btn">Retour à l'accueil</a>
+                <a href="{{ path('app_accueil') }}" class="header-btn logout">Déconnexion</a>
+            </nav>
+        </div>
+
+
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="mb-4 text-center fw-bold" style="color: #FF6600;">Mes Offres</h1>
 
         {% if offres is empty %}
-            <p class="text-center">Aucune offre disponible pour le moment.</p>
+            <p class="text-center text-muted">Aucune offre disponible pour le moment.</p>
         {% else %}
             <div class="row">
                 {% for offre in offres %}
                     <div class="col-md-4 mb-4">
-                        <div class="card shadow-sm border-light rounded">
+                        <div class="card shadow-sm border-0" style="background-color: #FFF5E6;">
                             <div class="card-body">
-                                <h5 class="card-title text-primary">{{ offre.titre }}</h5>
+                                <h5 class="card-title fw-bold" style="color: #FF6600;">{{ offre.titre }}</h5>
                                 <p><strong>Poste:</strong> {{ offre.poste }}</p>
                                 <p><strong>Niveau d'étude requis:</strong> {{ offre.niveauEtude }}</p>
                                 <p><strong>Durée:</strong> {{ offre.duree }}</p>
-                                <p class="card-text"><p><strong>Objectif:</strong> {{ offre.attentes|slice(0, 100) ~ '...' }}</p> <!-- Limite la description -->
-                                <a href="{{ path('pme_mes_offres', {'id': offre.id}) }}" class="btn btn-outline-primary">Voir les détails</a>
-                                <!-- Dans templates/mes_offres/index.html.twig -->
-                                <a href="{{ path('mes_offres_alternants', {'id': offre.id}) }}" class="btn btn-outline-success">Voir les alternants</a>
+                                <p><strong>Objectif:</strong> {{ offre.attentes|slice(0, 100) ~ '...' }}</p>
 
+                                <div class="d-flex justify-content-between mt-3">
+                                    <a href="{{ path('pme_mes_offres', {'id': offre.id}) }}" class="btn btn-outline-warning btn-sm">Voir les détails</a>
+                                    <a href="{{ path('mes_offres_alternants', {'id': offre.id}) }}" class="btn btn-outline-secondary btn-sm">Voir les alternants</a>
+                                </div>
                             </div>
                         </div>
                     </div>

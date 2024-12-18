@@ -43,9 +43,12 @@
             {{ form_errors(form.password) }}
         </div>
 
+
         <button type="submit" class="btn-submit">S'inscrire</button>
+
 
         {{ form_end(form) }}
         <a href="{{ path('app_accueil') }}" class="btn-return">Retour à l'accueil</a>
+        <a href="{{ path('app_alternant') }}" class="btn-return">Skip</a>
     </div>
 {% endblock %}

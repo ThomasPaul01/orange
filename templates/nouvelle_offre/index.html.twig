@@ -4,6 +4,11 @@
 
 {% block title %}Ajouter une offre{% endblock %}
 
+{% block header_title %}
+    <img src="{{ asset('images/next-talent.png') }}" alt="Logo" onclick="window.location.href='{{ path('app_accueil') }}">
+    <h1>Ajouter une nouvelle offre</h1>
+{% endblock %}
+
 {% block content %}
     <div class="container">
         <h1 class="my-4">Ajouter une nouvelle offre</h1>

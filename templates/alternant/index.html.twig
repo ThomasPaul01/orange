@@ -176,8 +176,22 @@
         }
     </style>
 {% endblock %}
-{% block header_title %}<!-- Affichage du bouton de déconnexion -->
-<a href="{{ path('app_accueil') }}" class="btn-submit">Déconnexion</a>
+{% block header_title %}
+    <img src="{{ asset('images/next-talent.png') }}" alt="Logo" onclick="window.location.href='{{ path('app_accueil') }}">
+    <!-- Affichage du bouton de déconnexion -->
+
+    <div class="container d-flex justify-content-between align-items-center">
+        <!-- Logo ou Titre -->
+        <h1 class="text-orange"></h1>
+
+        <!-- Navigation -->
+        <nav>
+            <a href="" class="header-btn">Mon profil</a>
+            <a href="" class="header-btn">Mes préferences</a>
+            <a href="{{ path('app_accueil') }}" class="header-btn">Retour à l'accueil</a>
+            <a href="{{ path('app_accueil') }}" class="header-btn logout">Déconnexion</a>
+        </nav>
+    </div>
 {% endblock %}
 
 {% block content %}
@@ -191,12 +205,6 @@
                 <option value="paris">Paris</option>
                 <option value="lyon">Lyon</option>
                 <option value="marseille">Marseille</option>
-            </select>
-
-            <select id="type-filter" aria-label="Filtrer par type de contrat">
-                <option value="">Type de contrat</option>
-                <option value="alternance">Alternance</option>
-                <option value="stage">Stage</option>
             </select>
 
             <select id="duration-filter" aria-label="Filtrer par durée de contrat">
@@ -234,40 +242,81 @@
             <div class="offer-card" data-region="paris" data-type="alternance" data-duration="12mois" data-rhythm="1semaine" data-domain="informatique" data-handicap="moteur">
                 <img src="{{ asset('images/next-talent.png') }}" alt="Next Talent" class="company-logo">
                 <h3>Développeur Web - Paris</h3>
-                <p><strong>Contrat:</strong> Alternance</p>
+                <div class="badges">
+                    <img src="{{ asset('images/badgeMental.png') }}" alt="badge Mental">
+                    <img src="{{ asset('images/badgeMoteur.png') }}" alt="badge Auditif">
+                    <img src="{{ asset('images/badgeAuditif.png') }}" alt="badge Auditif">
+                </div>
+
                 <p><strong>Entreprise:</strong> Next Talent</p>
                 <p><strong>Durée:</strong> 12 mois</p>
                 <p><strong>Rythme:</strong> 1 semaine sur 2</p>
-                <p><strong>Handicap pris en charge:</strong> Moteur</p>
                 <p><strong>Domaine:</strong> Informatique</p>
-                <div class="rse-badge">PME Engagée</div>
                 <a href="#" class="btn-apply">Postuler</a>
             </div>
 
             <div class="offer-card" data-region="lyon" data-type="stage" data-duration="6mois" data-rhythm="2semaines" data-domain="marketing" data-handicap="visuel">
                 <img src="{{ asset('images/dataCorp.png') }}" alt="Data Corp" class="company-logo">
                 <h3>Analyste Data - Lyon</h3>
-                <p><strong>Contrat:</strong> Stage</p>
+                <div class="badges">
+                    <img src="{{ asset('images/badgeMental.png') }}" alt="badge Mental">
+                </div>
                 <p><strong>Entreprise:</strong> Data Corp</p>
                 <p><strong>Durée:</strong> 6 mois</p>
                 <p><strong>Rythme:</strong> 2 semaines sur 2</p>
-                <p><strong>Handicap pris en charge:</strong> Visuel</p>
                 <p><strong>Domaine:</strong> Data Science</p>
-                <div class="rse-badge">PME Engagée</div>
                 <a href="#" class="btn-apply">Postuler</a>
             </div>
 
             <div class="offer-card" data-region="marseille" data-type="alternance" data-duration="12mois" data-rhythm="1semaine" data-domain="finance" data-handicap="auditif">
                 <img src="{{ asset('images/itSolution.png') }}" alt="Finance Plus" class="company-logo">
                 <h3>Analyste Financier - Marseille</h3>
-                <p><strong>Contrat:</strong> Alternance</p>
+                <div class="badges">
+                    <img src="{{ asset('images/badgeVisuel.png') }}" alt="badge Visuel">
+                    <img src="{{ asset('images/badgeAuditif.png') }}" alt="badge Auditif">
+                </div>
                 <p><strong>Entreprise:</strong> Finance Plus</p>
                 <p><strong>Durée:</strong> 12 mois</p>
                 <p><strong>Rythme:</strong> 1 semaine sur 2</p>
-                <p><strong>Handicap pris en charge:</strong> Auditif</p>
                 <p><strong>Domaine:</strong> Finance</p>
                 <a href="#" class="btn-apply">Postuler</a>
             </div>
+            <div class="offer-card" data-region="paris" data-type="alternance" data-duration="12mois" data-rhythm="1semaine" data-domain="informatique" data-handicap="moteur">
+                <img src="{{ asset('images/next-talent.png') }}" alt="Next Talent" class="company-logo">
+                <h3>Développeur Web - Paris</h3>
+                <div class="badges">
+                    <img src="{{ asset('images/badgeMoteur.png') }}" alt="badge Auditif">
+                    <img src="{{ asset('images/badgeMental.png') }}" alt="badge Mental">
+                </div>
+                <p><strong>Entreprise:</strong> Next Talent</p>
+                <p><strong>Durée:</strong> 12 mois</p>
+                <p><strong>Rythme:</strong> 1 semaine sur 2</p>
+                <p><strong>Domaine:</strong> Informatique</p>
+                <a href="#" class="btn-apply">Postuler</a>
+            </div>
+            <div class="offer-card" data-region="paris" data-type="alternance" data-duration="12mois" data-rhythm="1semaine" data-domain="informatique" data-handicap="moteur">
+                <img src="{{ asset('images/next-talent.png') }}" alt="Next Talent" class="company-logo">
+                <h3>Développeur Web - Paris</h3>
+                <p><strong>Entreprise:</strong> Next Talent</p>
+                <p><strong>Durée:</strong> 12 mois</p>
+                <p><strong>Rythme:</strong> 1 semaine sur 2</p>
+                <p><strong>Domaine:</strong> Informatique</p>
+                <a href="#" class="btn-apply">Postuler</a>
+            </div>
+            <div class="offer-card" data-region="paris" data-type="alternance" data-duration="12mois" data-rhythm="1semaine" data-domain="informatique" data-handicap="moteur">
+                <img src="{{ asset('images/next-talent.png') }}" alt="Next Talent" class="company-logo">
+                <h3>Développeur Web - Paris</h3>
+                <div class="badges">
+                    <img src="{{ asset('images/badgeAuditif.png') }}" alt="badge Auditif">
+                    <img src="{{ asset('images/badgeMental.png') }}" alt="badge Mental">
+                </div>
+                <p><strong>Entreprise:</strong> Next Talent</p>
+                <p><strong>Durée:</strong> 12 mois</p>
+                <p><strong>Rythme:</strong> 1 semaine sur 2</p>
+                <p><strong>Domaine:</strong> Informatique</p>
+                <a href="#" class="btn-apply">Postuler</a>
+            </div>
+
         </div>
 
         <!-- Aucune offre trouvée -->
