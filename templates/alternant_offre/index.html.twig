@@ -1,0 +1,36 @@
+{# templates/mes_offres/alternants.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Alternants ayant postulé à "{{ offre.titre }}"{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="my-4">Alternants ayant postulé à l'offre "{{ offre.titre }}"</h1>
+
+        {% if alternants is empty %}
+            <p>Aucun alternant n'a postulé à cette offre pour le moment.</p>
+        {% else %}
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Email</th>
+                        <th>Date de candidature</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for alternant in alternants %}
+                        <tr>
+                            <td>{{ alternant.nom }} {{ alternant.prenom }}</td>
+                            <td>{{ alternant.email }}</td>
+
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Choix Entre Alternant et PME{% endblock %}</title>
+    <style>
+        /* Général */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff; /* Fond blanc pour le corps */
+            color: #333; /* Texte noir */
+        }
+
+        /* En-tête */
+        /* En-tête */
+        header {
+            background-color: #1e1e1e; /* Fond noir pour l'en-tête */
+            color: white;
+            display: flex; /* Utilisation de Flexbox pour la mise en page */
+            align-items: center; /* Centrer verticalement les éléments */
+            justify-content: space-between; /* Espacement entre le logo et le titre */
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        header img {
+            width: 80px;
+            height: auto;
+            margin-right: 10px; /* Espacement entre l'image et le titre */
+        }
+
+        header h1 {
+            font-size: 24px;
+            margin: 0;
+            flex-grow: 1; /* Permet au titre de prendre l'espace restant pour se centrer */
+            text-align: right; /* Centrer le texte du titre */
+
+        }
+
+
+
+
+        /* Contenu principal */
+        .content {
+            text-align: center;
+            padding: 50px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .content h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #FF6A13; /* Couleur orange pour le titre */
+        }
+
+        .choice-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            flex-wrap: wrap; /* Permet de mieux gérer l'affichage sur les petits écrans */
+        }
+
+        .choice-box {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            color: #333; /* Texte des choix */
+        }
+
+        .choice-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .choice-box img {
+            width: 80px; /* Taille limitée des icônes */
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .choice-box h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #FF6A13; /* Texte des titres de choix en orange */
+        }
+
+        /* Pied de page */
+        footer {
+            background-color: #1e1e1e; /* Fond noir */
+            color: #FF6A13; /* Texte orange */
+            text-align: center;
+            padding: 15px;
+        }
+
+        .form-container {
+            background: white;
+            padding: 40px;
+            max-width: 600px;
+            margin: 50px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #FF6A13;
+        }
+
+        .registration-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-control {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        .form-control:focus {
+            border-color: #FF6A13;
+            outline: none;
+        }
+
+        .btn-submit {
+            background: #FF6A13;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: #e05c0b;
+        }
+        .btn-return {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #ccc;
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 5px;
+            text-align: center;
+            transition: background 0.3s ease;
+        }
+
+        .btn-return:hover {
+            background: #bbb;
+        }
+        form {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+
+<header>
+    <img src="{{ asset('images/next-talent.png') }}" alt="Logo" onclick="window.location.href='{{ path('app_accueil') }}">
+    <h1>{% block header_title %}{% endblock %}</h1>
+    <!-- base.html.twig -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+</header>
+
+{% block content %}
+{% endblock %}
+
+<footer>
+    <p>&copy; 2024 NexTalent by Orange. Tous droits réservés.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+{# templates/mes_offres/index.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes Offres{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="my-4 text-center">Mes Offres</h1>
+
+        <a href="{{ path('pme_ajouter_offre') }}" class="btn btn-primary mb-4">Ajouter une nouvelle offre</a>
+
+        {% if offres is empty %}
+            <p class="text-center">Aucune offre disponible pour le moment.</p>
+        {% else %}
+            <div class="row">
+                {% for offre in offres %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-sm border-light rounded">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary">{{ offre.titre }}</h5>
+                                <p><strong>Poste:</strong> {{ offre.poste }}</p>
+                                <p><strong>Niveau d'étude requis:</strong> {{ offre.niveauEtude }}</p>
+                                <p><strong>Durée:</strong> {{ offre.duree }}</p>
+                                <p class="card-text"><p><strong>Objectif:</strong> {{ offre.attentes|slice(0, 100) ~ '...' }}</p> <!-- Limite la description -->
+                                <a href="{{ path('pme_mes_offres', {'id': offre.id}) }}" class="btn btn-outline-primary">Voir les détails</a>
+                                <!-- Dans templates/mes_offres/index.html.twig -->
+                                <a href="{{ path('mes_offres_alternants', {'id': offre.id}) }}" class="btn btn-outline-success">Voir les alternants</a>
+
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
