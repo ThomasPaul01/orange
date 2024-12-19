@@ -1,16 +1,13 @@
-{# templates/mes_offres/alternants.html.twig #}
-
 {% extends 'base.html.twig' %}
 
 {% block title %}Alternants ayant postulé à "{{ offre.titre }}"{% endblock %}
+
 {% block header_title %}
-    <img src="{{ asset('images/next-talent.png') }}" alt="Logo" onclick="window.location.href='{{ path('app_accueil') }}">
+    <img src="{{ asset('images/next-talent.png') }}" alt="Logo" onclick="window.location.href='{{ path('app_accueil') }}'">
 
     <div class="container d-flex justify-content-between align-items-center">
-        <!-- Logo ou Titre -->
         <h1 class="text-orange"></h1>
 
-        <!-- Navigation -->
         <nav>
             <a href="{{ path('pme_mes_offres') }}" class="header-btn">Voir mes offres</a>
             <a href="{{ path('pme_ajouter_offre') }}" class="header-btn">Ajouter une offre</a>
@@ -18,18 +15,23 @@
             <a href="{{ path('app_accueil') }}" class="header-btn logout">Déconnexion</a>
         </nav>
     </div>
-
-
 {% endblock %}
+
 {% block content %}
     <div class="container">
         <h1 class="my-4">Alternants ayant postulé à l'offre "{{ offre.titre }}"</h1>
 
         {% set alternants = [
-            {'nom': 'Dupont', 'prenom': 'Jean', 'email': 'jean.dupont@example.com', 'ville': 'Paris', 'domaine': 'Informatique', 'handicap': true},
-            {'nom': 'Martin', 'prenom': 'Sophie', 'email': 'sophie.martin@example.com', 'ville': 'Lyon', 'domaine': 'Ressources Humaines', 'handicap': false},
-            {'nom': 'Lemoine', 'prenom': 'Paul', 'email': 'paul.lemoine@example.com', 'ville': 'Marseille', 'domaine': 'Marketing', 'handicap': false},
-            {'nom': 'Girard', 'prenom': 'Claire', 'email': 'claire.girard@example.com', 'ville': 'Toulouse', 'domaine': 'Informatique', 'handicap': true}
+            {'nom': 'Dupont', 'prenom': 'Jean', 'email': 'jean.dupont@example.com', 'ville': 'Paris', 'domaine': 'Informatique', 'handicap': ['auditif', 'moteur']},
+            {'nom': 'Martin', 'prenom': 'Sophie', 'email': 'sophie.martin@example.com', 'ville': 'Lyon', 'domaine': 'Ressources Humaines', 'handicap': []},
+            {'nom': 'Lemoine', 'prenom': 'Paul', 'email': 'paul.lemoine@example.com', 'ville': 'Marseille', 'domaine': 'Marketing', 'handicap': []},
+            {'nom': 'Girard', 'prenom': 'Claire', 'email': 'claire.girard@example.com', 'ville': 'Toulouse', 'domaine': 'Informatique', 'handicap': ['visuel']},
+            {'nom': 'Zhang', 'prenom': 'Wei', 'email': 'wei.zhang@example.com', 'ville': 'Lille', 'domaine': 'Informatique', 'handicap': ['auditif']},
+            {'nom': 'Martinez', 'prenom': 'Carlos', 'email': 'carlos.martinez@example.com', 'ville': 'Nice', 'domaine': 'Marketing', 'handicap': []},
+            {'nom': 'Kim', 'prenom': 'Jin', 'email': 'jin.kim@example.com', 'ville': 'Bordeaux', 'domaine': 'Informatique', 'handicap': ['moteur']},
+            {'nom': 'Rodriguez', 'prenom': 'Alejandro', 'email': 'alejandro.rodriguez@example.com', 'ville': 'Strasbourg', 'domaine': 'Ressources Humaines', 'handicap': []},
+            {'nom': 'Nguyen', 'prenom': 'Minh', 'email': 'minh.nguyen@example.com', 'ville': 'Lyon', 'domaine': 'Informatique', 'handicap': ['auditif', 'moteur']},
+            {'nom': 'Dubois', 'prenom': 'Sofia', 'email': 'sofia.dubois@example.com', 'ville': 'Montpellier', 'domaine': 'Marketing', 'handicap': []}
         ] %}
 
         {% if alternants is empty %}
@@ -40,21 +42,23 @@
                     <div class="col-md-4">
                         <div class="card mb-4 shadow-sm">
                             <div class="card-body">
-                                <h5 class="card-title" style="color: orange;">{{ alternant.nom }} {{ alternant.prenom }}</h5>
+                                <h5 class="card-title" style="color: darkorange;">{{ alternant.nom }} {{ alternant.prenom }}</h5>
                                 <p><strong>Email :</strong> {{ alternant.email }}</p>
                                 <p><strong>Ville :</strong> {{ alternant.ville }}</p>
                                 <p><strong>Domaine :</strong> {{ alternant.domaine }}</p>
 
-                                {% if alternant.handicap %}
-                                    <span class="badge bg-primary" style="font-size: 1rem;">Handicap</span>
-                                    <p><strong>Handicap : </strong>Oui, victime d'un handicap.</p>
-                                {% else %}
-                                    <p><strong>Handicap : </strong>Non</p>
+                                {% if alternant.handicap is not empty %}
+                                    <p><strong>Handicap :</strong>
+                                        {% for h in alternant.handicap %}
+                                            {{ h }}{% if not loop.last %}, {% endif %}
+                                        {% endfor %}
+                                    </p>
                                 {% endif %}
 
                                 <div class="d-flex justify-content-between">
                                     <button class="btn btn-info" disabled>Télécharger le CV</button>
                                     <button class="btn btn-success" disabled>Contacter</button>
+                                    <a href="#" class="btn btn-secondary">En savoir plus</a>
                                 </div>
                             </div>
                         </div>
