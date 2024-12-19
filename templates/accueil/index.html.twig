@@ -3,19 +3,22 @@
 {% block title %}Accueil{% endblock %}
 
 {% block header_title %}
-    <img src="{{ asset('images/next-talent.png') }}" alt="Logo" onclick="window.location.href='{{ path('app_accueil') }}">
+    <div class="text-center">
+        <img src="{{ asset('images/next-talent.png') }}" alt="Logo" class="logo" onclick="window.location.href='{{ path('app_accueil') }}">
+
+    </div>
 {% endblock %}
 
 {% block content %}
     <div class="content">
 
-        <h2 class="main-title">Choisissez une option :</h2>
+        <h2 class="main-title text-center">Choisissez une option :</h2>
         <div class="choice-container">
 
             <!-- Choix Alternant -->
-            <div class="choice-box" onclick="window.location.href='{{ path('app_alternant') }}'">
+            <div class="choice-box" onclick="window.location.href='{{ path('alternant_questionnaire') }}'">
                 <div class="icon-container">
-                    <img src="{{ asset('images/etudiant.png') }}" alt="Alternant Icon">
+                    <img src="{{ asset('images/etudiant.png') }}" alt="Alternant Icon" class="icon">
                 </div>
                 <div class="text-container">
                     <h3>Alternant</h3>
@@ -26,13 +29,14 @@
             <!-- Choix PME -->
             <div class="choice-box" onclick="window.location.href='{{ path('pme_mes_offres') }}'">
                 <div class="icon-container">
-                    <img src="{{ asset('images/batPme.png') }}" alt="PME Icon">
+                    <img src="{{ asset('images/batPme.png') }}" alt="PME Icon" class="icon">
                 </div>
                 <div class="text-container">
                     <h3>PME</h3>
                     <p>Explorez nos solutions pour PME.</p>
                 </div>
             </div>
+
 
         </div>
     </div>

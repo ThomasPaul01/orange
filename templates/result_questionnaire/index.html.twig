@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Résultats du questionnaire{% endblock %}
+
+{% block header_title %}
+    <img src="{{ asset('images/next-talent.png') }}" alt="Logo" onclick="window.location.href='{{ path('app_accueil') }}'">
+    <div class="container d-flex justify-content-between align-items-center">
+        <h1 class="text-orange"></h1>
+        <nav>
+            <a href="{{ path('pme_mes_offres') }}" class="header-btn">Voir mes offres</a>
+            <a href="{{ path('pme_ajouter_offre') }}" class="header-btn">Ajouter une offre</a>
+            <a href="{{ path('app_accueil') }}" class="header-btn">Retour à l'accueil</a>
+            <a href="{{ path('app_accueil') }}" class="header-btn logout">Déconnexion</a>
+        </nav>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container my-5">
+        <h2 class="text-center mb-4" style="color:#f60 ">Résultats du questionnaire</h2>
+
+        <div class="card shadow-sm p-4">
+            <h4 class="mb-3">Ses réponses :</h4>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <strong>Domaine de recherche :</strong>
+                    <span class="text-muted">{{ resultats.domaine }}</span>
+                </li>
+                <li class="list-group-item">
+                    <strong>Rythme d'alternance :</strong>
+                    <span class="text-muted">{{ resultats.rythme }}</span>
+                </li>
+                <li class="list-group-item">
+                    <strong>Durée d'alternance :</strong>
+                    <span class="text-muted">{{ resultats.duree }}</span>
+                </li>
+                <li class="list-group-item">
+                    <strong>Région :</strong>
+                    <span class="text-muted">{{ resultats.region }}</span>
+                </li>
+                <li class="list-group-item">
+                    <strong>Visio possible :</strong>
+                    <span class="text-muted">{{ resultats.visio }}</span>
+                </li>
+                <li class="list-group-item">
+                    <strong>Niveau d'étude :</strong>
+                    <span class="text-muted">{{ resultats.niveau_etude }}</span>
+                </li>
+                <li class="list-group-item">
+                    <strong>Qualité du personnel recherché :</strong>
+                    <span class="text-muted">{{ resultats.qualite_personnel }}</span>
+                </li>
+                <li class="list-group-item">
+                    <strong>Handicap :</strong>
+                    <span class="text-muted">{{ resultats.handicap }}</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{{ path('pme_mes_offres') }}" class="btn btn-secondary">Retour</a>
+        </div>
+    </div>
+{% endblock %}

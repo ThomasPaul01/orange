@@ -114,72 +114,12 @@
             font-size: 0.9rem;
             margin-top: 10px;
         }
-
-        /* Conteneur principal */
-        .content {
-            text-align: center;
-            padding: 20px;
-            background-color: #f9f9f9;
-        }
-
-        /* Titre principal */
-        .main-title {
-            font-size: 2em;
-            color: #333;
-            margin-bottom: 30px;
-        }
-
-        /* Conteneur des options */
-        .choice-container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        /* Boîte de choix */
-        .choice-box {
-            background: #ffffff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 250px;
-            text-align: center;
-            padding: 20px;
-            transition: transform 0.2s, box-shadow 0.2s;
-            cursor: pointer;
-        }
-
-        .choice-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Conteneur de l'image */
-        .icon-container img {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 15px;
-        }
-
-        /* Texte de la boîte */
-        .text-container h3 {
-            font-size: 1.3em;
-            margin: 10px 0;
-            color: #333;
-        }
-
-        .text-container p {
-            font-size: 0.9em;
-            color: #666;
-            margin: 0;
-        }
     </style>
 {% endblock %}
-{% block header_title %}
-    <img src="{{ asset('images/next-talent.png') }}" alt="Logo" onclick="window.location.href='{{ path('app_accueil') }}">
-    <!-- Affichage du bouton de déconnexion -->
 
+{% block header_title %}
+    <img src="{{ asset('images/next-talent.png') }}" alt="Logo" onclick="window.location.href='{{ path('app_accueil') }}'">
+    <!-- Affichage du bouton de déconnexion -->
     <div class="container d-flex justify-content-between align-items-center">
         <!-- Logo ou Titre -->
         <h1 class="text-orange"></h1>
@@ -187,7 +127,7 @@
         <!-- Navigation -->
         <nav>
             <a href="" class="header-btn">Mon profil</a>
-            <a href="" class="header-btn">Mes préferences</a>
+            <a href="{{ path('alternant_questionnaire') }}" class="header-btn">Mes préferences</a>
             <a href="{{ path('app_accueil') }}" class="header-btn">Retour à l'accueil</a>
             <a href="{{ path('app_accueil') }}" class="header-btn logout">Déconnexion</a>
         </nav>
@@ -200,32 +140,6 @@
 
         <!-- Filtres -->
         <div class="filters">
-            <select id="region-filter" aria-label="Filtrer par région">
-                <option value="">Sélectionnez une région</option>
-                <option value="paris">Paris</option>
-                <option value="lyon">Lyon</option>
-                <option value="marseille">Marseille</option>
-            </select>
-
-            <select id="duration-filter" aria-label="Filtrer par durée de contrat">
-                <option value="">Durée du contrat</option>
-                <option value="6mois">6 mois</option>
-                <option value="12mois">12 mois</option>
-                <option value="18mois">18 mois</option>
-            </select>
-
-            <select id="rhythm-filter" aria-label="Filtrer par rythme d'alternance">
-                <option value="">Rythme d'alternance</option>
-                <option value="1semaine">1 semaine sur 2</option>
-                <option value="2semaines">2 semaines sur 2</option>
-            </select>
-
-            <select id="domain-filter" aria-label="Filtrer par domaine">
-                <option value="">Domaine</option>
-                <option value="informatique">Informatique</option>
-                <option value="marketing">Marketing</option>
-                <option value="finance">Finance</option>
-            </select>
             <select id="handicap-filter" aria-label="Filtrer par type de handicap">
                 <option value="">Sélectionnez un handicap</option>
                 <option value="moteur">Handicap moteur</option>
@@ -239,83 +153,93 @@
 
         <!-- Liste des offres -->
         <div id="offers-list" class="offers-list">
-            <div class="offer-card" data-region="paris" data-type="alternance" data-duration="12mois" data-rhythm="1semaine" data-domain="informatique" data-handicap="moteur">
-                <img src="{{ asset('images/next-talent.png') }}" alt="Next Talent" class="company-logo">
-                <h3>Développeur Web - Paris</h3>
+            <div class="offer-card" data-region="Île-de-France" data-type="alternance" data-duration="6mois" data-rhythm="1semaineEntreprise1semaineEcole" data-domain="informatique" data-visio="oui" data-level="Bac+2">
+                <img src="{{ asset('images/next-talent.png') }}" alt="Tech Innovators" class="company-logo">
+                <h3>Alternance - Développeur Full Stack</h3>
                 <div class="badges">
-                    <img src="{{ asset('images/badgeMental.png') }}" alt="badge Mental">
-                    <img src="{{ asset('images/badgeMoteur.png') }}" alt="badge Auditif">
-                    <img src="{{ asset('images/badgeAuditif.png') }}" alt="badge Auditif">
-                </div>
-
-                <p><strong>Entreprise:</strong> Next Talent</p>
-                <p><strong>Durée:</strong> 12 mois</p>
-                <p><strong>Rythme:</strong> 1 semaine sur 2</p>
-                <p><strong>Domaine:</strong> Informatique</p>
-                <a href="#" class="btn-apply">Postuler</a>
-            </div>
-
-            <div class="offer-card" data-region="lyon" data-type="stage" data-duration="6mois" data-rhythm="2semaines" data-domain="marketing" data-handicap="visuel">
-                <img src="{{ asset('images/dataCorp.png') }}" alt="Data Corp" class="company-logo">
-                <h3>Analyste Data - Lyon</h3>
-                <div class="badges">
-                    <img src="{{ asset('images/badgeMental.png') }}" alt="badge Mental">
-                </div>
-                <p><strong>Entreprise:</strong> Data Corp</p>
-                <p><strong>Durée:</strong> 6 mois</p>
-                <p><strong>Rythme:</strong> 2 semaines sur 2</p>
-                <p><strong>Domaine:</strong> Data Science</p>
-                <a href="#" class="btn-apply">Postuler</a>
-            </div>
-
-            <div class="offer-card" data-region="marseille" data-type="alternance" data-duration="12mois" data-rhythm="1semaine" data-domain="finance" data-handicap="auditif">
-                <img src="{{ asset('images/itSolution.png') }}" alt="Finance Plus" class="company-logo">
-                <h3>Analyste Financier - Marseille</h3>
-                <div class="badges">
+                   <img src="{{ asset('images/badgeMoteur.png') }}" alt="badge Moteur">
                     <img src="{{ asset('images/badgeVisuel.png') }}" alt="badge Visuel">
                     <img src="{{ asset('images/badgeAuditif.png') }}" alt="badge Auditif">
                 </div>
-                <p><strong>Entreprise:</strong> Finance Plus</p>
-                <p><strong>Durée:</strong> 12 mois</p>
-                <p><strong>Rythme:</strong> 1 semaine sur 2</p>
-                <p><strong>Domaine:</strong> Finance</p>
-                <a href="#" class="btn-apply">Postuler</a>
-            </div>
-            <div class="offer-card" data-region="paris" data-type="alternance" data-duration="12mois" data-rhythm="1semaine" data-domain="informatique" data-handicap="moteur">
-                <img src="{{ asset('images/next-talent.png') }}" alt="Next Talent" class="company-logo">
-                <h3>Développeur Web - Paris</h3>
-                <div class="badges">
-                    <img src="{{ asset('images/badgeMoteur.png') }}" alt="badge Auditif">
-                    <img src="{{ asset('images/badgeMental.png') }}" alt="badge Mental">
-                </div>
-                <p><strong>Entreprise:</strong> Next Talent</p>
-                <p><strong>Durée:</strong> 12 mois</p>
-                <p><strong>Rythme:</strong> 1 semaine sur 2</p>
+
+                <p><strong>Entreprise:</strong> Tech Innovators</p>
+                <p><strong>Durée:</strong> 6 mois</p>
+                <p><strong>Rythme:</strong> 1 semaine en entreprise, 1 semaine à l'école</p>
                 <p><strong>Domaine:</strong> Informatique</p>
+                <p><strong>Visio possible:</strong> Oui</p>
+                <p><strong>Niveau d'étude:</strong> Bac+2</p>
                 <a href="#" class="btn-apply">Postuler</a>
             </div>
-            <div class="offer-card" data-region="paris" data-type="alternance" data-duration="12mois" data-rhythm="1semaine" data-domain="informatique" data-handicap="moteur">
-                <img src="{{ asset('images/next-talent.png') }}" alt="Next Talent" class="company-logo">
-                <h3>Développeur Web - Paris</h3>
-                <p><strong>Entreprise:</strong> Next Talent</p>
-                <p><strong>Durée:</strong> 12 mois</p>
-                <p><strong>Rythme:</strong> 1 semaine sur 2</p>
-                <p><strong>Domaine:</strong> Informatique</p>
-                <a href="#" class="btn-apply">Postuler</a>
-            </div>
-            <div class="offer-card" data-region="paris" data-type="alternance" data-duration="12mois" data-rhythm="1semaine" data-domain="informatique" data-handicap="moteur">
-                <img src="{{ asset('images/next-talent.png') }}" alt="Next Talent" class="company-logo">
-                <h3>Développeur Web - Paris</h3>
+
+            <div class="offer-card" data-region="Île-de-France" data-type="alternance" data-duration="6mois" data-rhythm="1semaineEntreprise1semaineEcole" data-domain="informatique" data-visio="oui" data-level="Bac+2">
+                <img src="{{ asset('images/next-talent.png') }}" alt="CodeCraft" class="company-logo">
+                <h3>Alternance - Développeur Backend</h3>
                 <div class="badges">
+                    <img src="{{ asset('images/badgeMoteur.png') }}" alt="badge Moteur">
                     <img src="{{ asset('images/badgeAuditif.png') }}" alt="badge Auditif">
-                    <img src="{{ asset('images/badgeMental.png') }}" alt="badge Mental">
                 </div>
-                <p><strong>Entreprise:</strong> Next Talent</p>
-                <p><strong>Durée:</strong> 12 mois</p>
-                <p><strong>Rythme:</strong> 1 semaine sur 2</p>
+
+                <p><strong>Entreprise:</strong> CodeCraft</p>
+                <p><strong>Durée:</strong> 6 mois</p>
+                <p><strong>Rythme:</strong> 1 semaine en entreprise, 1 semaine à l'école</p>
                 <p><strong>Domaine:</strong> Informatique</p>
+                <p><strong>Visio possible:</strong> Oui</p>
+                <p><strong>Niveau d'étude:</strong> Bac+2</p>
                 <a href="#" class="btn-apply">Postuler</a>
             </div>
+
+            <div class="offer-card" data-region="Île-de-France" data-type="alternance" data-duration="6mois" data-rhythm="1semaineEntreprise1semaineEcole" data-domain="informatique" data-visio="oui" data-level="Bac+2">
+                <img src="{{ asset('images/logo.png') }}" alt="DevSphere" class="company-logo">
+                <h3>Alternance - Développeur Frontend</h3>
+                <div class="badges">
+                    <img src="{{ asset('images/badgeMental.png') }}" alt="badge Mental">
+                    <img src="{{ asset('images/badgeMoteur.png') }}" alt="badge Moteur">
+                </div>
+
+                <p><strong>Entreprise:</strong> DevSphere</p>
+                <p><strong>Durée:</strong> 6 mois</p>
+                <p><strong>Rythme:</strong> 1 semaine en entreprise, 1 semaine à l'école</p>
+                <p><strong>Domaine:</strong> Informatique</p>
+                <p><strong>Visio possible:</strong> Oui</p>
+                <p><strong>Niveau d'étude:</strong> Bac+2</p>
+                <a href="#" class="btn-apply">Postuler</a>
+            </div>
+
+            <div class="offer-card" data-region="Île-de-France" data-type="alternance" data-duration="6mois" data-rhythm="1semaineEntreprise1semaineEcole" data-domain="informatique" data-visio="oui" data-level="Bac+2">
+                <img src="{{ asset('images/next-talent.png') }}" alt="ByteLabs" class="company-logo">
+                <h3>Alternance - Développeur Mobile</h3>
+                <div class="badges">
+                    <img src="{{ asset('images/badgeMental.png') }}" alt="badge Mental">
+                   </div>
+
+                <p><strong>Entreprise:</strong> ByteLabs</p>
+                <p><strong>Durée:</strong> 6 mois</p>
+                <p><strong>Rythme:</strong> 1 semaine en entreprise, 1 semaine à l'école</p>
+                <p><strong>Domaine:</strong> Informatique</p>
+                <p><strong>Visio possible:</strong> Oui</p>
+                <p><strong>Niveau d'étude:</strong> Bac+2</p>
+                <a href="#" class="btn-apply">Postuler</a>
+            </div>
+
+            <div class="offer-card" data-region="Île-de-France" data-type="alternance" data-duration="6mois" data-rhythm="1semaineEntreprise1semaineEcole" data-domain="informatique" data-visio="oui" data-level="Bac+2">
+                <img src="{{ asset('images/next-talent.png') }}" alt="InnovaTech" class="company-logo">
+                <h3>Alternance - Développeur Data</h3>
+                <div class="badges">
+                    <img src="{{ asset('images/badgeMental.png') }}" alt="badge Mental">
+                    <img src="{{ asset('images/badgeMoteur.png') }}" alt="badge Moteur">
+                    <img src="{{ asset('images/badgeAuditif.png') }}" alt="badge Auditif">
+                </div>
+
+                <p><strong>Entreprise:</strong> InnovaTech</p>
+                <p><strong>Durée:</strong> 6 mois</p>
+                <p><strong>Rythme:</strong> 1 semaine en entreprise, 1 semaine à l'école</p>
+                <p><strong>Domaine:</strong> Informatique</p>
+                <p><strong>Visio possible:</strong> Oui</p>
+                <p><strong>Niveau d'étude:</strong> Bac+2</p>
+                <a href="#" class="btn-apply">Postuler</a>
+            </div>
+
+            <!-- D'autres cartes d'offres ici... -->
 
         </div>
 
@@ -325,72 +249,45 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const regionFilter = document.getElementById('region-filter');
-            const typeFilter = document.getElementById('type-filter');
-            const durationFilter = document.getElementById('duration-filter');
-            const rhythmFilter = document.getElementById('rhythm-filter');
-            const domainFilter = document.getElementById('domain-filter');
+            const handicapFilter = document.getElementById('handicap-filter');
             const keywordFilter = document.getElementById('keyword-filter');
-            const offersList = document.getElementById('offers-list');
-            const noResultsMessage = document.getElementById('no-results');
+            const offerCards = document.querySelectorAll('.offer-card');
+            const noResults = document.querySelector('.no-results');
 
             function filterOffers() {
-                const region = regionFilter.value.toLowerCase();
-                const type = typeFilter.value.toLowerCase();
-                const duration = durationFilter.value.toLowerCase();
-                const rhythm = rhythmFilter.value.toLowerCase();
-                const domain = domainFilter.value.toLowerCase();
                 const keyword = keywordFilter.value.toLowerCase();
+                const handicap = handicapFilter.value;
 
-                const offers = offersList.getElementsByClassName('offer-card');
-                let found = false;
+                let visibleOffers = 0;
 
-                Array.from(offers).forEach(offer => {
-                    const title = offer.querySelector('h3').innerText.toLowerCase();
-                    const contract = offer.querySelector('p:nth-of-type(1)').innerText.toLowerCase();
-                    const location = offer.querySelector('p:nth-of-type(2)').innerText.toLowerCase();
-                    const durationText = offer.querySelector('p:nth-of-type(3)').innerText.toLowerCase();
-                    const rhythmText = offer.querySelector('p:nth-of-type(4)').innerText.toLowerCase();
-                    const domainText = offer.querySelector('p:nth-of-type(5)').innerText.toLowerCase();
+                offerCards.forEach(offer => {
+                    const title = offer.querySelector('h3').textContent.toLowerCase();
+                    const company = offer.querySelector('p').textContent.toLowerCase();
+                    const offerHandicap = offer.getAttribute('data-handicap');
 
-                    // Get custom data attributes
-                    const offerRegion = offer.dataset.region.toLowerCase();
-                    const offerType = offer.dataset.type.toLowerCase();
-                    const offerDuration = offer.dataset.duration.toLowerCase();
-                    const offerRhythm = offer.dataset.rhythm.toLowerCase();
-                    const offerDomain = offer.dataset.domain.toLowerCase();
+                    const matchesKeyword = title.includes(keyword) || company.includes(keyword);
+                    const matchesHandicap = handicap === '' || offerHandicap === handicap;
 
-                    // Check for matches
-                    const matchesRegion = region === '' || offerRegion.includes(region);
-                    const matchesType = type === '' || offerType.includes(type);
-                    const matchesDuration = duration === '' || offerDuration.includes(duration);
-                    const matchesRhythm = rhythm === '' || offerRhythm.includes(rhythm);
-                    const matchesDomain = domain === '' || offerDomain.includes(domain);
-                    const matchesKeyword = keyword === '' || title.includes(keyword);
-
-                    if (matchesRegion && matchesType && matchesDuration && matchesRhythm && matchesDomain && matchesKeyword) {
+                    if (matchesKeyword && matchesHandicap) {
                         offer.style.display = 'block';
-                        found = true;
+                        visibleOffers++;
                     } else {
                         offer.style.display = 'none';
                     }
                 });
 
-                // Display no results message
-                noResultsMessage.style.display = found ? 'none' : 'block';
+                if (visibleOffers === 0) {
+                    noResults.style.display = 'block';
+                } else {
+                    noResults.style.display = 'none';
+                }
             }
 
-            // Add event listeners to the filters
-            regionFilter.addEventListener('change', filterOffers);
-            typeFilter.addEventListener('change', filterOffers);
-            durationFilter.addEventListener('change', filterOffers);
-            rhythmFilter.addEventListener('change', filterOffers);
-            domainFilter.addEventListener('change', filterOffers);
+            handicapFilter.addEventListener('change', filterOffers);
             keywordFilter.addEventListener('input', filterOffers);
 
-            // Initialize the filter function in case there are any pre-selected values
+            // Initial filter check
             filterOffers();
         });
-
     </script>
 {% endblock %}

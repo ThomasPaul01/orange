@@ -3,22 +3,20 @@
 {% block title %}Mes Offres{% endblock %}
 
 {% block header_title %}
-    <img src="{{ asset('images/next-talent.png') }}" alt="Logo" onclick="window.location.href='{{ path('app_accueil') }}">
+    <img src="{{ asset('images/next-talent.png') }}" alt="Logo" onclick="window.location.href='{{ path('app_accueil') }}'">
 
     <div class="container d-flex justify-content-between align-items-center">
-            <!-- Logo ou Titre -->
-            <h1 class="text-orange"></h1>
+        <!-- Logo ou Titre -->
+        <h1 class="text-orange"></h1>
 
-            <!-- Navigation -->
-            <nav>
-                <a href="{{ path('pme_mes_offres') }}" class="header-btn">Voir mes offres</a>
-                <a href="{{ path('pme_ajouter_offre') }}" class="header-btn">Ajouter une offre</a>
-                <a href="{{ path('app_accueil') }}" class="header-btn">Retour à l'accueil</a>
-                <a href="{{ path('app_accueil') }}" class="header-btn logout">Déconnexion</a>
-            </nav>
-        </div>
-
-
+        <!-- Navigation -->
+        <nav>
+            <a href="{{ path('pme_mes_offres') }}" class="header-btn">Voir mes offres</a>
+            <a href="{{ path('pme_ajouter_offre') }}" class="header-btn">Ajouter une offre</a>
+            <a href="{{ path('app_accueil') }}" class="header-btn">Retour à l'accueil</a>
+            <a href="{{ path('app_accueil') }}" class="header-btn logout">Déconnexion</a>
+        </nav>
+    </div>
 {% endblock %}
 
 {% block content %}
@@ -41,7 +39,12 @@
 
                                 <div class="d-flex justify-content-between mt-3">
                                     <a href="{{ path('pme_mes_offres', {'id': offre.id}) }}" class="btn btn-outline-warning btn-sm">Voir les détails</a>
-                                    <a href="{{ path('mes_offres_alternants', {'id': offre.id}) }}" class="btn btn-outline-secondary btn-sm">Voir les alternants</a>
+                                    <a href="{{ path('mes_offres_alternants', {'id': offre.id}) }}" class="btn btn-outline-secondary btn-sm">Voir les postulants</a>
+
+                                    <!-- Formulaire de suppression -->
+
+                                        <a type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette offre ?')">Supprimer</a>
+
                                 </div>
                             </div>
                         </div>

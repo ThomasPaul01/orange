@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Questionnaire pour les alternants{% endblock %}
+
+{% block header_title %}
+    <img src="{{ asset('images/next-talent.png') }}" alt="Logo" onclick="window.location.href='{{ path('app_accueil') }}">
+    <!-- Affichage du bouton de déconnexion -->
+
+    <div class="container d-flex justify-content-between align-items-center">
+        <!-- Logo ou Titre -->
+        <h1 class="text-orange"></h1>
+
+        <!-- Navigation -->
+        <nav>
+            <a href="" class="header-btn">Mon profil</a>
+            <a href="{{ path('alternant_questionnaire') }}" class="header-btn">Mes préférences</a>
+            <a href="{{ path('app_accueil') }}" class="header-btn">Retour à l'accueil</a>
+            <a href="{{ path('app_accueil') }}" class="header-btn logout">Déconnexion</a>
+        </nav>
+    </div>
+{% endblock %}
+{% block content %}
+    <div class="container my-5">
+
+        <h2 class="text-center mb-4" style="color: #f60">Répondez à un questionnaire pour trouver les entreprises qui correspondant à vos critères</h2>
+
+        <form action="#" method="POST" class="form-questionnaire">
+            <div class="mb-4">
+                <label for="domaine" class="form-label">Domaine de recherche</label>
+                <select id="domaine" class="form-select">
+                    <option value="informatique">Informatique</option>
+                    <option value="marketing">Marketing</option>
+                    <option value="rh">Ressources Humaines</option>
+                    <option value="finance">Finance</option>
+                    <option value="communication">Communication</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="rythme" class="form-label">Rythme d'alternance</label>
+                <select id="rythme" class="form-select">
+                    <option value="1">1 semaine en entreprise, 1 semaine à l'école</option>
+                    <option value="2">3 semaines en entreprise, 1 semaine à l'école</option>
+                    <option value="3">Autre</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="duree" class="form-label">Durée de l'alternance</label>
+                <select id="duree" class="form-select">
+                    <option value="6 mois">6 mois</option>
+                    <option value="12 mois">12 mois</option>
+                    <option value="24 mois">24 mois</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="region" class="form-label">Région</label>
+                <select id="region" class="form-select">
+                    <option value="paris">Île-de-France</option>
+                    <option value="lyon">Auvergne-Rhône-Alpes</option>
+                    <option value="marseille">Provence-Alpes-Côte d'Azur</option>
+                    <option value="bordeaux">Nouvelle-Aquitaine</option>
+                    <option value="lille">Hauts-de-France</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="visio" class="form-label">Visio possible</label>
+                <select id="visio" class="form-select">
+                    <option value="oui">Oui</option>
+                    <option value="non">Non</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="niveau_etude" class="form-label">Niveau d'étude</label>
+                <select id="niveau_etude" class="form-select">
+                    <option value="bac+2">Bac+2</option>
+                    <option value="bac+3">Bac+3</option>
+                    <option value="bac+4">Bac+4</option>
+                    <option value="bac+5">Bac+5</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="qualite_personnel" class="form-label">Qualité personnelle</label>
+                <select id="qualite_personnel" class="form-select">
+                    <option value="autonome">Autonome</option>
+                    <option value="dynamique">Dynamique</option>
+                    <option value="motivé">Motivé</option>
+                    <option value="rigoureux">Rigoureux</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="handicap" class="form-label">Handicap</label>
+                <textarea id="handicap" class="form-control" rows="3" placeholder="Précisez votre handicap, si applicable"></textarea>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <a href="{{ path('app_alternant') }}" type="submit"  class="btn btn-secondary btn-lg" style="background-color: #f60; border-color: #f60 " >Trouver des entreprises</a>
+                <a href="{{ path('app_alternant') }}" class="btn btn-secondary btn-lg">Passer</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}
