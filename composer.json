@@ -44,7 +44,7 @@
         "symfony/yaml": "6.4.*",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/twig": "^2.12|^3.0",
-      "ext-http": "*"
+        "ext-http": "*"
     },
     "config": {
         "allow-plugins": {
@@ -52,7 +52,10 @@
             "symfony/flex": true,
             "symfony/runtime": true
         },
-        "sort-packages": true
+        "sort-packages": true,
+        "platform": {
+            "php": "8.3.14"
+        }
     },
     "autoload": {
         "psr-4": {
